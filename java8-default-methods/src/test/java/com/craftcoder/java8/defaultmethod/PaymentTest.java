@@ -8,21 +8,25 @@ import org.junit.Test;
 public class PaymentTest {
 
 	@Test
-	public void shouldCalculateTheOrderPriceWithPayPalService() throws Exception {
-		PayPalPaymentService payment = new PayPalPaymentService();
+	public void shouldCalculateTheOrderPriceUsingPayPalService() throws Exception {
+		PaymentService payment = new PayPalPaymentService();
 		
-		double orderPrice = payment.calculateOrder(100.0);
+		double orderPrice = 100.0;
+		double discount = payment.discount();
+		double finalPrice = orderPrice - (orderPrice * discount);
 		
-		assertThat(orderPrice, equalTo(100.0));
+		assertThat(finalPrice, equalTo(80.0));
 	}
 	
 	@Test
-	public void shouldCalculateTheOrderPrice() throws Exception {
-		PayPalPaymentService payment = new PayPalPaymentService();
+	public void shouldCalculateTheOrderPriceUsingMoipService() throws Exception {
+		PaymentService payment = new MoipPaymentService();
 		
-		double orderPrice = payment.calculateOrder(100.0);
+		double orderPrice = 100.0;
+		double discount = payment.discount();
+		double finalPrice = orderPrice - (orderPrice * discount);
 		
-		assertThat(orderPrice, equalTo(100.0));
+		assertThat(finalPrice, equalTo(90.0));
 	}
 	
 }
@@ -30,16 +34,24 @@ public class PaymentTest {
 
 interface PaymentService {
 	
-	double calculateOrder(double price);
+	double discount();
 	
 }
 
 class PayPalPaymentService implements PaymentService {
 
 	@Override
-	public double calculateOrder(double price) {
-		return price;
+	public double discount() {
+		return 0.20;
 	}
 	
 }
 
+class MoipPaymentService implements PaymentService {
+
+	@Override
+	public double discount() {
+		return 0.10;
+	}
+	
+}
