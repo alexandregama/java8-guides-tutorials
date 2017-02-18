@@ -12,8 +12,7 @@ public class PaymentTest {
 		PaymentService payment = new PayPalPaymentService();
 		
 		double orderPrice = 100.0;
-		double discount = payment.discount();
-		double finalPrice = orderPrice - (orderPrice * discount);
+		double finalPrice = payment.calculeOrder(orderPrice);
 		
 		assertThat(finalPrice, equalTo(80.0));
 	}
@@ -23,8 +22,7 @@ public class PaymentTest {
 		PaymentService payment = new MoipPaymentService();
 		
 		double orderPrice = 100.0;
-		double discount = payment.discount();
-		double finalPrice = orderPrice - (orderPrice * discount);
+		double finalPrice = payment.calculeOrder(orderPrice);
 		
 		assertThat(finalPrice, equalTo(90.0));
 	}
@@ -35,6 +33,10 @@ public class PaymentTest {
 interface PaymentService {
 	
 	double discount();
+	
+	default double calculeOrder(double orderPrice) {
+		return orderPrice - (orderPrice * discount());
+	}
 	
 }
 
