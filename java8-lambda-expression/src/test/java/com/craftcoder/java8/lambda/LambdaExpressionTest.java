@@ -17,4 +17,11 @@ public class LambdaExpressionTest {
 		runnable.run();
 	}
 
+	@Test
+	public void shouldRunRunnableObjectWithoutAnonymousClass() throws Exception {
+		Runnable runnable = () -> System.out.println("Awesome! Lambda Expression here!");
+
+		runnable.run();
+	}
+
 }
