@@ -60,10 +60,19 @@ public class LambdaExpressionTest {
 	}
 
 	@Test
-	public void shouldOrderTheListOfNamesByLambdaExpressionWithoutBracesAndReturnkeyword() throws Exception {
+	public void shouldOrderTheListOfNamesByLambdaExpressionWithoutBracesAndReturnKeyword() throws Exception {
 		List<String> craftCoderGuides = Arrays.asList("Mockito", "CDI", "JUnit", "Hibernate", "Spring");
 
 		Collections.sort(craftCoderGuides, (String firstGuide, String secondGuide) -> firstGuide.compareTo(secondGuide));
+
+		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+	}
+
+	@Test
+	public void shouldOrderTheListOfNamesByLambdaExpressionWithoutParameterTypes() throws Exception {
+		List<String> craftCoderGuides = Arrays.asList("Mockito", "CDI", "JUnit", "Hibernate", "Spring");
+
+		Collections.sort(craftCoderGuides, (firstGuide, secondGuide) -> firstGuide.compareTo(secondGuide));
 
 		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
