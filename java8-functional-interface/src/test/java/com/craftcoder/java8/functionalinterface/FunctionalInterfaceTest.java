@@ -24,4 +24,9 @@ public class FunctionalInterfaceTest {
 		functionalInterface.doSomething();
 	}
 
+	@Test
+	public void shouldToBypassTheLambdaExpressionRule() throws Exception {
+//		AnotherFakeFunctionalInterface fake = () -> {}; Compilation error
+	}
+
 }
