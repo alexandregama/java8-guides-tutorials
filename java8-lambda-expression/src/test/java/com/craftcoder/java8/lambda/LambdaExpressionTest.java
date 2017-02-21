@@ -47,4 +47,16 @@ public class LambdaExpressionTest {
 		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
 
+	@Test
+	public void shouldOrderTheListOfNamesByLambdaExpression() throws Exception {
+		List<String> craftCoderGuides = Arrays.asList("Mockito", "CDI", "JUnit", "Hibernate", "Spring");
+
+
+		Collections.sort(craftCoderGuides, (String firstGuide, String secondGuide) -> {
+			return firstGuide.compareTo(secondGuide);
+		});
+
+		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+	}
+
 }
