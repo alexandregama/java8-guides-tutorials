@@ -42,5 +42,17 @@ public class StreamReduceTest {
 		assertThat(reduced.isPresent(), is(true));
 		assertThat(reduced.get(), equalTo(8));
 	}
+
+        @Test
+        public void shouldReduceTheListOfNumbersByUsingMethodReference() {
+            List<Integer> numbers = Arrays.asList(1, 2, 5);
+
+		Optional<Integer> reduced = numbers
+				.stream()
+				.reduce(Integer::sum);
+
+		assertThat(reduced.isPresent(), is(true));
+		assertThat(reduced.get(), equalTo(8));
+        }
 	
 }
