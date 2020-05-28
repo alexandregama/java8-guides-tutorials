@@ -1,5 +1,15 @@
 /target/
 build/
+gradle/
+gradlew
+gradlew.bat
+bin/
+wrapper/
+.idea/
 .classpath
 .project
 .settings
+.gradle
+mastering-guava.iml
+mastering-guava.ipr
+mastering-guava.iws
