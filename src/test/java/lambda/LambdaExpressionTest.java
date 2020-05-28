@@ -1,13 +1,15 @@
-package com.craftcoder.java8.lambda;
+package lambda;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.CoreMatchers.*;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 public class LambdaExpressionTest {
@@ -18,7 +20,7 @@ public class LambdaExpressionTest {
 
 			@Override
 			public void run() {
-				System.out.println("Yes, anonymous object here :(");
+				System.out.println("Yes, anonymous object here ");
 			}
 		};
 
@@ -44,7 +46,7 @@ public class LambdaExpressionTest {
 			}
 		});
 
-		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+		assertThat(craftCoderGuides, CoreMatchers.hasItems("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
 
 	@Test
@@ -56,7 +58,7 @@ public class LambdaExpressionTest {
 			return firstGuide.compareTo(secondGuide);
 		});
 
-		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+		assertThat(craftCoderGuides, CoreMatchers.hasItems("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
 
 	@Test
@@ -65,7 +67,7 @@ public class LambdaExpressionTest {
 
 		Collections.sort(craftCoderGuides, (String firstGuide, String secondGuide) -> firstGuide.compareTo(secondGuide));
 
-		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+		assertThat(craftCoderGuides, CoreMatchers.hasItems("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
 
 	@Test
@@ -74,7 +76,7 @@ public class LambdaExpressionTest {
 
 		Collections.sort(craftCoderGuides, (firstGuide, secondGuide) -> firstGuide.compareTo(secondGuide));
 
-		assertThat(craftCoderGuides, contains("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
+		assertThat(craftCoderGuides, CoreMatchers.hasItems("CDI", "Hibernate", "JUnit", "Mockito", "Spring"));
 	}
 
 }
