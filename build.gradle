@@ -9,5 +9,7 @@ repositories {
 }
 
 dependencies {
-        compile group: 'junit', name: 'junit', version: '4.+'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'junit:junit:4.12'
 }
